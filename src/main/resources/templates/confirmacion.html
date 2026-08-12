@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto Recibido</title>
+</head>
+<body>
+    <h1>Gracias por contactarnos</h1>
+    <p th:text="${'Nombre: ' + contacto.nombre}"></p>
+    <p th:text="${'Correo: ' + contacto.correo}"></p>
+    <p th:text="${'Mensaje: ' + contacto.mensaje}"></p>
+</body>
+</html>
