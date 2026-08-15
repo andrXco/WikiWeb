@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <header th:fragment="header" class="site-header">
+        <div class="container header-inner">
+            <a th:href="@{/}" class="brand">📚 Wiki del Proyecto</a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul>
+                    <li><a th:href="@{/}">Inicio</a></li>
+                    <li><a th:href="@{/wiki}">Wiki</a></li>
+                    <li><a th:href="@{/contacto}">Contáctenos</a></li>
+                </ul>
+            </nav>
+        </div>
+        <script th:src="@{/js/nav.js}"></script>
+    </header>
+
+    <footer th:fragment="footer" class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Wiki del Proyecto &mdash; Taller de Thymeleaf, Pontificia Universidad Javeriana.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

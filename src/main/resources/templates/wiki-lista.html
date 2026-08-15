@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki · Secciones</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>Secciones de la Wiki</h1>
+            <p>Toda la documentación del proyecto, organizada por tema.</p>
+        </div>
+
+        <div class="card-grid" th:if="${secciones != null and !secciones.isEmpty()}">
+            <article class="card" th:each="seccion : ${secciones}">
+                <h2 th:text="${seccion.titulo}">Título</h2>
+                <p th:text="${seccion.resumen}">Resumen</p>
+                <a class="btn btn-primary" th:href="@{/wiki/{slug}(slug=${seccion.slug})}">Ver sección</a>
+            </article>
+        </div>
+
+        <p th:if="${secciones == null or secciones.isEmpty()}">
+            Todavía no hay secciones publicadas.
+        </p>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

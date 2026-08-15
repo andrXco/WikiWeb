@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio · Wiki del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main>
+        <section class="hero container">
+            <h1>Wiki del Proyecto</h1>
+            <p>
+                Documentación técnica del proyecto semestral: qué estamos construyendo, por qué,
+                y cómo está organizado el desarrollo a lo largo de las entregas.
+            </p>
+            <div class="button-row">
+                <a th:href="@{/wiki}" class="btn btn-primary">Explorar la Wiki</a>
+                <a th:href="@{/contacto}" class="btn btn-secondary">Contáctenos</a>
+            </div>
+        </section>
+
+        <section class="container" th:if="${secciones != null and !secciones.isEmpty()}">
+            <div class="page-heading">
+                <h2>Secciones destacadas</h2>
+                <p>Un vistazo rápido a lo que vas a encontrar en la Wiki.</p>
+            </div>
+            <div class="card-grid">
+                <article class="card" th:each="seccion : ${secciones}">
+                    <h3 th:text="${seccion.titulo}">Título</h3>
+                    <p th:text="${seccion.resumen}">Resumen</p>
+                    <a class="btn btn-secondary" th:href="@{/wiki/{slug}(slug=${seccion.slug})}">Leer más</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="container" th:if="${secciones == null or secciones.isEmpty()}">
+            <p>Todavía no hay secciones publicadas.</p>
+        </section>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>
