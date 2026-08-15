@@ -1,12 +1,12 @@
 package com.javeriana.edu.demo.Controller;
 
-import com.javeriana.edu.demo.Model.Contacto;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.javeriana.edu.demo.Model.Contacto;
 
 @Controller
 public class ContactoController {
