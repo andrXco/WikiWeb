@@ -1,26 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de Contacto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos · Wiki del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Formulario de Contacto</h1>
 
-    <form th:action="@{/contacto}" th:object="${contacto}" method="post">
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" th:field="*{nombre}">
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>Contáctenos</h1>
+            <p>¿Tienes dudas o comentarios sobre el proyecto? Escríbenos.</p>
         </div>
-        <div>
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" th:field="*{correo}">
+
+        <div class="form-card">
+            <div id="form-status" class="form-status" role="alert"></div>
+
+            <form id="form-contacto" th:action="@{/contacto}" th:object="${contacto}" method="post" novalidate>
+
+                <div class="form-field" data-field="nombre">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" autocomplete="name">
+                    <p class="field-error" id="error-nombre"></p>
+                </div>
+
+                <div class="form-field" data-field="correo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" th:field="*{correo}" autocomplete="email">
+                    <p class="field-error" id="error-correo"></p>
+                </div>
+
+                <div class="form-field" data-field="telefono">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" th:field="*{telefono}" autocomplete="tel">
+                    <p class="field-error" id="error-telefono"></p>
+                </div>
+
+                <div class="form-field" data-field="asunto">
+                    <label for="asunto">Asunto o motivo de contacto</label>
+                    <select id="asunto" name="asunto">
+                        <option value="" disabled
+                                th:selected="${contacto.asunto == null or #strings.isEmpty(contacto.asunto)}">Seleccione una opción</option>
+                        <option value="Consulta general" th:selected="${contacto.asunto == 'Consulta general'}">Consulta general</option>
+                        <option value="Soporte técnico" th:selected="${contacto.asunto == 'Soporte técnico'}">Soporte técnico</option>
+                        <option value="Sugerencia" th:selected="${contacto.asunto == 'Sugerencia'}">Sugerencia</option>
+                        <option value="Otro" th:selected="${contacto.asunto == 'Otro'}">Otro</option>
+                    </select>
+                    <p class="field-error" id="error-asunto"></p>
+                </div>
+
+                <div class="form-field" data-field="mensaje">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" th:field="*{mensaje}" maxlength="400"></textarea>
+                    <p class="field-hint" id="contador-mensaje">Mínimo 20 caracteres. Quedan 400 caracteres.</p>
+                    <p class="field-error" id="error-mensaje"></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </form>
         </div>
-        <div>
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" th:field="*{mensaje}"></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-    </form>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+    <script th:src="@{/js/contacto.js}"></script>
 </body>
 </html>

@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ContactoController {
 
+    // FORMULARIO DE CONTACTO
     @GetMapping("/contacto")
     public String mostrarFormulario(Model model) {
         model.addAttribute("contacto", new Contacto());
         return "formulario";
     }
 
+    // PROCESAR FORMULARIO
     @PostMapping("/contacto")
     public String procesarFormulario(@ModelAttribute Contacto contacto, Model model) {
         model.addAttribute("contacto", contacto);

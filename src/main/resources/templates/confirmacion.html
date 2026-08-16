@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Contacto Recibido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje enviado · Wiki del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Gracias por contactarnos</h1>
-    <p th:text="${'Nombre: ' + contacto.nombre}"></p>
-    <p th:text="${'Correo: ' + contacto.correo}"></p>
-    <p th:text="${'Mensaje: ' + contacto.mensaje}"></p>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>¡Gracias por contactarnos!</h1>
+            <p>Recibimos tu mensaje. Este es el resumen de lo que enviaste:</p>
+        </div>
+
+        <div class="confirmation-card">
+            <dl>
+                <dt>Nombre</dt>
+                <dd th:text="${contacto.nombre}">Nombre</dd>
+
+                <dt>Correo</dt>
+                <dd th:text="${contacto.correo}">Correo</dd>
+
+                <dt>Teléfono</dt>
+                <dd th:text="${contacto.telefono}">Teléfono</dd>
+
+                <dt>Asunto</dt>
+                <dd th:text="${contacto.asunto}">Asunto</dd>
+
+                <dt>Mensaje</dt>
+                <dd th:text="${contacto.mensaje}">Mensaje</dd>
+            </dl>
+
+            <a th:href="@{/}" class="btn btn-primary" style="margin-top: 1.5rem;">Volver al inicio</a>
+        </div>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
 </body>
 </html>

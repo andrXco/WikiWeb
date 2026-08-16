@@ -1,0 +1,391 @@
+:root {
+    --color-bg: #f7f8fb;
+    --color-surface: #ffffff;
+    --color-text: #1f2430;
+    --color-muted: #5b6373;
+    --color-primary: #2f5df5;
+    --color-primary-dark: #1f42c4;
+    --color-border: #e3e6ec;
+    --color-danger: #d63447;
+    --color-success: #1f9d55;
+    --radius: 10px;
+    --shadow: 0 2px 10px rgba(20, 25, 40, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.55;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* Header / Nav */
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--color-muted);
+    font-weight: 600;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.main-nav a:hover {
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.main-nav a.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 0;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Hero */
+.hero {
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    color: var(--color-muted);
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+}
+
+.button-row {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.btn-secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Section / page heading */
+.page-heading {
+    padding: 2rem 0 1rem;
+}
+
+.page-heading h1 {
+    margin-bottom: 0.25rem;
+}
+
+.page-heading p {
+    color: var(--color-muted);
+    margin-top: 0;
+}
+
+/* Cards grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0 2.5rem;
+}
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.card h2, .card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.card p {
+    color: var(--color-muted);
+    flex: 1;
+}
+
+.card .btn {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* Wiki detail layout */
+.wiki-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    align-items: start;
+}
+
+.wiki-sidebar {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    position: sticky;
+    top: 5.5rem;
+}
+
+.wiki-sidebar h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    margin-top: 0;
+}
+
+.wiki-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wiki-sidebar li + li {
+    margin-top: 0.25rem;
+}
+
+.wiki-sidebar a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.92rem;
+}
+
+.wiki-sidebar a:hover {
+    background: var(--color-bg);
+}
+
+.wiki-sidebar a.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.wiki-article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+}
+
+.wiki-article h1 {
+    margin-top: 0;
+}
+
+@media (max-width: 720px) {
+    .wiki-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wiki-sidebar {
+        position: static;
+    }
+}
+
+/* Forms */
+.form-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    max-width: 620px;
+    margin: 0 auto 3rem;
+}
+
+.form-field {
+    margin-bottom: 1.25rem;
+}
+
+.form-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(47, 93, 245, 0.15);
+}
+
+.form-field.is-invalid input,
+.form-field.is-invalid select,
+.form-field.is-invalid textarea {
+    border-color: var(--color-danger);
+}
+
+.field-error {
+    color: var(--color-danger);
+    font-size: 0.82rem;
+    margin-top: 0.3rem;
+    min-height: 1.1em;
+}
+
+.field-hint {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.form-status {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    display: none;
+}
+
+.form-status.status-error {
+    display: block;
+    background: rgba(214, 52, 71, 0.1);
+    color: var(--color-danger);
+}
+
+.form-status.status-success {
+    display: block;
+    background: rgba(31, 157, 85, 0.1);
+    color: var(--color-success);
+}
+
+/* Confirmation page */
+.confirmation-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    max-width: 620px;
+    margin: 2rem auto 3rem;
+}
+
+.confirmation-card dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    row-gap: 0.6rem;
+    column-gap: 1rem;
+}
+
+.confirmation-card dt {
+    font-weight: 600;
+    color: var(--color-muted);
+}
+
+.confirmation-card dd {
+    margin: 0;
+}
