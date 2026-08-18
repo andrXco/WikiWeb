@@ -1,0 +1,6 @@
+services:
+  wikiweb:
+    build: .
+    container_name: wikiweb
+    ports:
+      - "8080:8080"
