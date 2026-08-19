@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${seccion.titulo} + ' · Wiki'">Sección · Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container">
+        <div class="wiki-layout">
+            <nav class="wiki-sidebar" aria-label="Secciones de la Wiki">
+                <h2>Secciones</h2>
+                <ul>
+                    <li th:each="s : ${secciones}">
+                        <a th:href="@{/wiki/{slug}(slug=${s.slug})}"
+                           th:text="${s.titulo}"
+                           th:classappend="${s.slug == seccion.slug} ? 'active'">Título</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <article class="wiki-article">
+                <h1 th:text="${seccion.titulo}">Título de la sección</h1>
+                <p th:text="${seccion.contenido}">Contenido de la sección.</p>
+            </article>
+        </div>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>
