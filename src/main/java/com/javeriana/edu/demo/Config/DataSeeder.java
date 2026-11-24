@@ -108,6 +108,14 @@ public class DataSeeder {
                     "pruebas-unitarias-sonarqube.pdf",
                     6));
 
+             documentoRepository.save(new Documento(
+                    "pruebas-automatizadas",
+                    "Pruebas automatizadas",
+                    "Suites automatizadas del backend y del frontend: unitarias, integración de la API y pruebas E2E "
+                            + "con Playwright, cómo se ejecutan en local y en CI, y sus resultados.",
+                    "pruebas-automatizadas.pdf",
+                    7));
+
             documentoRepository.save(new Documento(
                     "roles-seguridad",
                     "Roles y seguridad",
