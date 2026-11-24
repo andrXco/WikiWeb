@@ -21,8 +21,16 @@ Para detenerla: `docker compose down`.
 | --------------- | ----------------------------------------- |
 | `/`             | Inicio                                    |
 | `/wiki`         | Secciones de la wiki                      |
+| `/documentos`   | Documentos de la entrega final (visor PDF)|
 | `/arquitectura` | Visor del PDF de arquitectura (modelo C4) |
 | `/contacto`     | Formulario de contacto                    |
 
 El PDF está en `src/main/resources/static/docs/arquitectura-bpmn.pdf`. Para actualizarlo, reemplaza ese archivo
 y vuelve a construir con `docker compose up -d --build`.
+
+## Documentos de la entrega
+
+Los PDF están en `src/main/resources/static/docs/` y se registran en `DataSeeder`
+(método `documentosIniciales`). Para publicar uno nuevo: copia el PDF en esa carpeta,
+agrega su `new Documento(...)` en el seeder y vuelve a construir con
+`docker compose up -d --build`.
