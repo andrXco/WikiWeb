@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${documento.titulo} + ' · Documentos'">Documento · Documentos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container container-wide">
+        <div class="wiki-layout">
+            <nav class="wiki-sidebar" aria-label="Documentos de la entrega">
+                <h2>Documentos</h2>
+                <ul>
+                    <li th:each="d : ${documentos}">
+                        <a th:href="@{/documentos/{slug}(slug=${d.slug})}"
+                           th:text="${d.titulo}"
+                           th:classappend="${d.slug == documento.slug} ? 'active'">Título</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <article class="wiki-article">
+                <h1 th:text="${documento.titulo}">Título del documento</h1>
+                <p th:text="${documento.descripcion}">Descripción del documento.</p>
+
+                <div class="pdf-toolbar">
+                    <a class="btn btn-primary" th:href="@{/docs/{archivo}(archivo=${documento.archivo})}"
+                       target="_blank" rel="noopener">Abrir en otra pestaña</a>
+                    <a class="btn btn-secondary" th:href="@{/docs/{archivo}(archivo=${documento.archivo})}"
+                       download>Descargar PDF</a>
+                </div>
+
+                <div class="pdf-viewer">
+                    <object th:data="@{/docs/{archivo}(archivo=${documento.archivo})}" type="application/pdf">
+                        <p class="pdf-fallback">
+                            El navegador no puede mostrar el PDF aquí.
+                            <a th:href="@{/docs/{archivo}(archivo=${documento.archivo})}">Descárgalo</a>.
+                        </p>
+                    </object>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>

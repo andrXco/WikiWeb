@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos · Wiki del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header th:replace="~{fragments/layout :: header}"></header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>Documentos de la entrega final</h1>
+            <p>Documentos del proyecto BitWeb para la tercera entrega. Cada uno se puede ver aquí o descargar en PDF.</p>
+        </div>
+
+        <div class="card-grid" th:if="${documentos != null and !documentos.isEmpty()}">
+            <article class="card" th:each="documento : ${documentos}">
+                <h2 th:text="${documento.titulo}">Título</h2>
+                <p th:text="${documento.descripcion}">Descripción</p>
+                <a class="btn btn-primary" th:href="@{/documentos/{slug}(slug=${documento.slug})}">Ver documento</a>
+            </article>
+        </div>
+
+        <p th:if="${documentos == null or documentos.isEmpty()}">
+            Todavía no hay documentos publicados.
+        </p>
+    </main>
+
+    <footer th:replace="~{fragments/layout :: footer}"></footer>
+
+</body>
+</html>
