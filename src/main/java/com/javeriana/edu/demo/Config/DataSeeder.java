@@ -93,6 +93,14 @@ public class DataSeeder {
                     2));
 
             documentoRepository.save(new Documento(
+                    "pruebas-carga",
+                    "Pruebas de carga",
+                    "Pruebas de carga y estrés de la API con JMeter: seis escenarios de 50 a 1.200 usuarios, "
+                            + "latencia p95 y p99, solicitudes por segundo, errores y consumo de recursos.",
+                    "pruebas-carga.pdf",
+                    4));
+
+            documentoRepository.save(new Documento(
                     "pruebas-funcionales",
                     "Pruebas funcionales",
                     "Casos funcionales del frontend y del backend por historia de usuario, con su resultado, "
@@ -107,6 +115,14 @@ public class DataSeeder {
                             + "análisis de calidad con SonarQube (Quality Gate).",
                     "pruebas-unitarias-sonarqube.pdf",
                     6));
+
+             documentoRepository.save(new Documento(
+                    "pruebas-automatizadas",
+                    "Pruebas automatizadas",
+                    "Suites automatizadas del backend y del frontend: unitarias, integración de la API y pruebas E2E "
+                            + "con Playwright, cómo se ejecutan en local y en CI, y sus resultados.",
+                    "pruebas-automatizadas.pdf",
+                    7));
 
             documentoRepository.save(new Documento(
                     "roles-seguridad",
