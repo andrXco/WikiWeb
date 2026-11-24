@@ -87,7 +87,8 @@ public class DataSeeder {
             documentoRepository.save(new Documento(
                     "resumen-ejecutivo",
                     "Resumen ejecutivo",
-                    "Resumen ejecutivo del proyecto BitWeb.",
+                    "Resumen del proyecto BitWeb: problema, solución implementada, resultados consolidados de "
+                            + "todas las pruebas, hallazgos y estado de la entrega.",
                     "01_Resumen_Ejecutivo.pdf",
                     1));
 
@@ -101,8 +102,9 @@ public class DataSeeder {
 
             documentoRepository.save(new Documento(
                     "despliegue-bpmn",
-                    "Despliegue BPMN",
-                    "Documentación del proceso de despliegue de BitWeb representado con BPMN.",
+                    "Guía de despliegue",
+                    "Cómo se instala y opera BitWeb: ambientes development y staging con Docker Compose, CI/CD "
+                            + "con GitHub Actions, configuración, verificación, rollback y respaldos.",
                     "despliegue.pdf",
                     3));
 

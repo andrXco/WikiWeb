@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="pdf-viewer">
-                    <object th:data="@{/docs/{archivo}(archivo=${documento.archivo})}" type="application/pdf">
+                    <object th:data="@{/docs/{archivo}(archivo=${documento.archivo})} + '#view=FitH'" type="application/pdf">
                         <p class="pdf-fallback">
                             El navegador no puede mostrar el PDF aquí.
                             <a th:href="@{/docs/{archivo}(archivo=${documento.archivo})}">Descárgalo</a>.
