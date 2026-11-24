@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.javeriana.edu.demo.Model.WikiSeccion;
 import com.javeriana.edu.demo.Repository.WikiSeccionRepository;
+import com.javeriana.edu.demo.Model.Documento;
+import com.javeriana.edu.demo.Repository.DocumentoRepository;
 
 @Configuration
 public class DataSeeder {
@@ -71,6 +73,40 @@ public class DataSeeder {
                             + "empresa y usuario, de forma que cada usuario solo pueda ver y modificar la "
                             + "información de su propia empresa.",
                     5));
+        };
+    }
+
+    // Documentos de la entrega final; los PDF están en static/docs
+    @Bean
+    CommandLineRunner documentosIniciales(DocumentoRepository documentoRepository) {
+        return args -> {
+            if (documentoRepository.count() > 0) {
+                return;
+            }
+
+            documentoRepository.save(new Documento(
+                    "pruebas-funcionales",
+                    "Pruebas funcionales",
+                    "Casos funcionales del frontend y del backend por historia de usuario, con su resultado, "
+                            + "los defectos encontrados y las capturas de la ejecución.",
+                    "pruebas-funcionales.pdf",
+                    5));
+
+            documentoRepository.save(new Documento(
+                    "pruebas-unitarias-sonarqube",
+                    "Pruebas unitarias y SonarQube",
+                    "Pruebas unitarias y de integración del backend y del frontend, cobertura con JaCoCo y "
+                            + "análisis de calidad con SonarQube (Quality Gate).",
+                    "pruebas-unitarias-sonarqube.pdf",
+                    6));
+
+            documentoRepository.save(new Documento(
+                    "roles-seguridad",
+                    "Roles y seguridad",
+                    "Roles de la aplicación, matriz de permisos, autenticación con JWT, autorización en el "
+                            + "backend y en el frontend, riesgos y pruebas de seguridad.",
+                    "roles-seguridad.pdf",
+                    8));
         };
     }
 
