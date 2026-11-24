@@ -37,5 +37,4 @@ public class DocumentoController {
         model.addAttribute("documentos", documentoRepository.findAllByOrderByOrdenAsc());
         return "documento-detalle";
     }
-
 }
