@@ -85,12 +85,26 @@ public class DataSeeder {
             }
 
             documentoRepository.save(new Documento(
+                    "resumen-ejecutivo",
+                    "Resumen ejecutivo",
+                    "Resumen ejecutivo del proyecto BitWeb.",
+                    "01_Resumen_Ejecutivo.pdf",
+                    1));
+
+            documentoRepository.save(new Documento(
                     "arquitectura-c4",
                     "Arquitectura C4",
                     "Arquitectura de la plataforma con el modelo C4: contexto, contenedores, componentes de la "
                             + "API y de la SPA, despliegue con Docker Compose y decisiones arquitectónicas.",
                     "arquitectura-c4.pdf",
                     2));
+
+            documentoRepository.save(new Documento(
+                    "despliegue-bpmn",
+                    "Despliegue BPMN",
+                    "Documentación del proceso de despliegue de BitWeb representado con BPMN.",
+                    "despliegue.pdf",
+                    3));
 
             documentoRepository.save(new Documento(
                     "pruebas-carga",
